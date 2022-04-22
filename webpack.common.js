@@ -3,19 +3,28 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: {
-    main: "./src/index.js",
-  },
+  entry: path.join(__dirname, "src", "index.js"),
   output: {
     filename: "[name].[hash].js",
-    path: path.resolve("./dist"),
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: ["/node_modules"],
-        use: [{ loader: "babel-loader" }],
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              // presets: ["@babel/preset-env", "@babel/preset-react"],
+              presets: [
+                "@babel/preset-env",
+                ["@babel/preset-react", { runtime: "automatic" }],
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
@@ -41,18 +50,12 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.html$/,
-        exclude: [/node_modules/],
-        use: {
-          loader: "file-loader",
-        },
-      },
     ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      // template: "index.html",
+      title: "Application name",
+      template: path.join(__dirname, "src", "index.html"),
     }),
     new CleanWebpackPlugin(),
   ],
