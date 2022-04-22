@@ -1,0 +1,30 @@
+npm install -g grunt-cli
+npx create-react-app .
+npm install grunt --save-dev
+npm install grunt-webpack --save-dev
+npm install grunt-contrib-connect --save-dev
+npm install grunt-contrib-jshint --save-dev
+npm install grunt-contrib-uglify --save-dev
+
+
+
+npm install @syncfusion/ej2-react-button --save
+npm install webpack --save-dev
+npm install --save-dev babel-loader babel-core
+
+npm install --save-dev babel-cli babel-preset-react
+npm install webpack-cli –save-dev
+npm install webpack-dev-server –save-dev
+npm install html-webpack-plugin --save-dev
+npm install clean-webpack-plugin –save-dev
+npm install webpack-merge –save-dev
+
+
+# addtional loaders
+npm i svg-url-loader --save-dev
+
+
+#command to run the app
+grunt
+
+
